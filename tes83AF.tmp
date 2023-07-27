@@ -1,0 +1,66 @@
+[gd_scene load_steps=6 format=3 uid="uid://befuyfcdi8yqg"]
+
+[ext_resource type="PackedScene" uid="uid://dkklo2kiw0v4t" path="res://player.tscn" id="1_rsvo2"]
+[ext_resource type="Script" path="res://Platform.gd" id="1_we6pa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b3uru"]
+size = Vector2(3669, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5vxr7"]
+size = Vector2(30, 644)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dslo7"]
+size = Vector2(258, 20)
+
+[node name="Test_Level_1" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = -1.0
+offset_right = 1148.0
+offset_bottom = 651.0
+text = "Test Level"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="FloorAndWall" type="StaticBody2D" parent="."]
+position = Vector2(57, 635)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FloorAndWall"]
+position = Vector2(1782, 0)
+shape = SubResource("RectangleShape2D_b3uru")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="FloorAndWall"]
+position = Vector2(-41, -311)
+shape = SubResource("RectangleShape2D_5vxr7")
+
+[node name="Panel" type="Panel" parent="FloorAndWall"]
+offset_left = -59.0
+offset_top = -632.0
+offset_right = -22.0
+offset_bottom = 7.0
+
+[node name="Panel2" type="Panel" parent="FloorAndWall"]
+offset_left = -46.0
+offset_top = -11.0
+offset_right = 3620.0
+offset_bottom = 13.0
+
+[node name="Platform" type="StaticBody2D" parent="."]
+position = Vector2(1034, 502)
+script = ExtResource("1_we6pa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
+position = Vector2(129, 10)
+shape = SubResource("RectangleShape2D_dslo7")
+
+[node name="Panel" type="Panel" parent="Platform"]
+offset_right = 260.0
+offset_bottom = 21.0
+
+[node name="Timer" type="Timer" parent="Platform"]
+wait_time = 2.0
+autostart = true
+
+[node name="Player" parent="." instance=ExtResource("1_rsvo2")]
+position = Vector2(144, 475)
