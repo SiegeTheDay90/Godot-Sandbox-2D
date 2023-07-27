@@ -18,4 +18,3 @@ func change_dir():
 # Called every frame. 'delta' is the elapsed time since the previous frame. 
 func _process(delta):
 	self.position.x += dir*SPEED*delta
-

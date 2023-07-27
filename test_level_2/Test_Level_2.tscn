@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=3 uid="uid://b82cwecsdoosd"]
+
+[ext_resource type="Script" path="res://test_level_2/RigidBody2D.gd" id="1_igvpa"]
+[ext_resource type="Script" path="res://test_level_2/Test_Level_2.gd" id="1_t4lx6"]
+[ext_resource type="PackedScene" uid="uid://cyqc305nhtns7" path="res://home_button.tscn" id="2_tc8ji"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_318b7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eqpf0"]
+
+[node name="Test_Level_2" type="Node2D"]
+script = ExtResource("1_t4lx6")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 1151.0
+offset_bottom = 648.0
+text = "Physics Test"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(555, 360)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+material = SubResource("CanvasItemMaterial_318b7")
+position = Vector2(5, 52)
+polygon = PackedVector2Array(-4, 9, 189, 9, 189, -98, -4, 5, -160, -9, -162, 6)
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D/CollisionPolygon2D"]
+polygon = PackedVector2Array(-3, 5, -160, -9, -162, 6, 0, 9, 54, 9, 190, 9, 189, -99)
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(206, 465)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D2"]
+material = SubResource("CanvasItemMaterial_318b7")
+position = Vector2(5, 52)
+polygon = PackedVector2Array(-4, 9, 189, 9, 189, -98, -4, 5, -162, -23, -162, 6)
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D2/CollisionPolygon2D"]
+polygon = PackedVector2Array(-3, 5, -161, -23, -162, 6, 0, 9, 54, 9, 190, 9, 189, -99)
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2(666, 274)
+script = ExtResource("1_igvpa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource("CircleShape2D_eqpf0")
+
+[node name="Polygon2D" type="Polygon2D" parent="RigidBody2D/CollisionShape2D"]
+color = Color(1, 0, 1, 1)
+polygon = PackedVector2Array(11, 0, 5, -4, 0, -10, -5, -4, -10, 0, -3, 5, 0, 10, 3, 5)
+
+[node name="Camera2D" type="Camera2D" parent="RigidBody2D"]
+
+[node name="HomeButton" parent="RigidBody2D/Camera2D" instance=ExtResource("2_tc8ji")]
+
+[connection signal="pressed" from="RigidBody2D/Camera2D/HomeButton" to="." method="_on_home_button_pressed"]

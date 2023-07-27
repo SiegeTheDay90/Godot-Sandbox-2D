@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://befuyfcdi8yqg"]
 
-[ext_resource type="PackedScene" uid="uid://dkklo2kiw0v4t" path="res://player.tscn" id="1_rsvo2"]
-[ext_resource type="Script" path="res://Platform.gd" id="1_we6pa"]
+[ext_resource type="PackedScene" uid="uid://dkklo2kiw0v4t" path="res://test_level_1/player.tscn" id="1_rsvo2"]
+[ext_resource type="Script" path="res://test_level_1/Platform.gd" id="1_we6pa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b3uru"]
 size = Vector2(3669, 20)
@@ -18,7 +18,7 @@ size = Vector2(258, 20)
 offset_left = -1.0
 offset_right = 1148.0
 offset_bottom = 651.0
-text = "Test Level"
+text = "Platforms"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_lock_ = true
@@ -58,32 +58,45 @@ shape = SubResource("RectangleShape2D_dslo7")
 offset_right = 260.0
 offset_bottom = 21.0
 
-[node name="Player" parent="." instance=ExtResource("1_rsvo2")]
-position = Vector2(144, 475)
+[node name="Platform2" type="StaticBody2D" parent="."]
+position = Vector2(1035, 603)
+script = ExtResource("1_we6pa")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Player"]
-position = Vector2(1969, 60)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform2"]
+position = Vector2(129, 10)
+shape = SubResource("RectangleShape2D_dslo7")
 
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Player/StaticBody2D"]
+[node name="Panel" type="Panel" parent="Platform2"]
+offset_right = 260.0
+offset_bottom = 21.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Slopes" type="StaticBody2D" parent="."]
+position = Vector2(2113, 535)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Slopes"]
 position = Vector2(216, -114)
 scale = Vector2(1, 1.42465)
 polygon = PackedVector2Array(143, 9.82697, 142.209, 145.143, 443, 147.404)
 
-[node name="Polygon2D2" type="Polygon2D" parent="Player/StaticBody2D/CollisionPolygon2D2"]
+[node name="Polygon2D2" type="Polygon2D" parent="Slopes/CollisionPolygon2D2"]
 position = Vector2(-337.498, -17.7014)
 scale = Vector2(1, 0.701925)
 color = Color(1, 0, 0, 1)
 polygon = PackedVector2Array(-386.502, 229.218, 230.498, 32.2183, 233.498, 232.218)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player/StaticBody2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Slopes"]
 position = Vector2(-15, -121)
 scale = Vector2(1, 1.42465)
 polygon = PackedVector2Array(124, 9.82697, 128, 150.914, -498, 152.318)
 
-[node name="Polygon2D" type="Polygon2D" parent="Player/StaticBody2D/CollisionPolygon2D"]
+[node name="Polygon2D" type="Polygon2D" parent="Slopes/CollisionPolygon2D"]
 position = Vector2(-106.498, -12.7879)
 scale = Vector2(1, 0.701925)
 color = Color(1, 0, 0, 1)
 polygon = PackedVector2Array(776.498, 237.218, 480.498, 38.2183, 478.498, 236.218)
+
+[node name="Player" parent="." instance=ExtResource("1_rsvo2")]
+position = Vector2(144, 475)
 
 [node name="Timer" type="Timer" parent="."]

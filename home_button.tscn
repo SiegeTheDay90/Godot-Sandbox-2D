@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cyqc305nhtns7"]
+
+[node name="HomeButton" type="Button"]
+offset_left = -567.0
+offset_top = -311.0
+offset_right = -373.0
+offset_bottom = -239.0
+text = "Home"
