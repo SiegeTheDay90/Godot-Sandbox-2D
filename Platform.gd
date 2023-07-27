@@ -1,6 +1,6 @@
 extends StaticBody2D
 
-var moveCount = 0
+var SPEED = 150
 var dir = 1
 var interval_timer
 
@@ -11,13 +11,11 @@ func _ready():
 	interval_timer.wait_time = 2.0
 	interval_timer.connect("timeout", change_dir)
 	interval_timer.start()
-	
+
 func change_dir():
 	dir *= -1
 
 # Called every frame. 'delta' is the elapsed time since the previous frame. 
 func _process(delta):
-	self.position.x += dir
-	
-	
-	
+	self.position.x += dir*SPEED*delta
+
