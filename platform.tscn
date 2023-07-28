@@ -1,13 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://tcrko1rsqrdv"]
-
-[ext_resource type="Script" path="res://level_1_platforms_test/Platform.gd" id="1_b5t32"]
+[gd_scene load_steps=2 format=3 uid="uid://tcrko1rsqrdv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dslo7"]
 size = Vector2(258, 20)
 
 [node name="Platform" type="StaticBody2D"]
 position = Vector2(1034, 502)
-script = ExtResource("1_b5t32")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(129, 10)

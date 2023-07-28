@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://c20xkg7cqauxf"]
+
+[ext_resource type="Script" path="res://RigidBody2D.gd" id="1_ccdua"]
+[ext_resource type="Texture2D" uid="uid://ibuoqwv8tp8a" path="res://icon.svg" id="2_mvej8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_twowp"]
+size = Vector2(144, 16)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_0i56m"]
+polygon = PackedVector2Array(64, -59.6, 64, 59, 59.6, 64, -59, 64, -64, 59.6, -64, -59.6, -59, -63.9, 59, -64)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+lock_rotation = true
+script = ExtResource("1_ccdua")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource("RectangleShape2D_twowp")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+position = Vector2(3.8147e-06, 0)
+scale = Vector2(1.125, 0.125)
+texture = ExtResource("2_mvej8")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="RigidBody2D"]
+position = Vector2(3.8147e-06, 0)
+scale = Vector2(1.125, 0.125)
+occluder = SubResource("OccluderPolygon2D_0i56m")
