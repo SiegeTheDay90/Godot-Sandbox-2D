@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://befuyfcdi8yqg"]
+[gd_scene load_steps=7 format=3 uid="uid://befuyfcdi8yqg"]
 
+[ext_resource type="PackedScene" uid="uid://tcrko1rsqrdv" path="res://platform.tscn" id="1_gob12"]
 [ext_resource type="PackedScene" uid="uid://dkklo2kiw0v4t" path="res://level_1_platforms_test/player.tscn" id="1_rsvo2"]
 [ext_resource type="Script" path="res://level_1_platforms_test/Platform.gd" id="1_we6pa"]
 
@@ -46,17 +47,7 @@ offset_top = -11.0
 offset_right = 3620.0
 offset_bottom = 13.0
 
-[node name="Platform" type="StaticBody2D" parent="."]
-position = Vector2(1034, 502)
-script = ExtResource("1_we6pa")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
-position = Vector2(129, 10)
-shape = SubResource("RectangleShape2D_dslo7")
-
-[node name="Panel" type="Panel" parent="Platform"]
-offset_right = 260.0
-offset_bottom = 21.0
+[node name="Platform" parent="." instance=ExtResource("1_gob12")]
 
 [node name="Platform2" type="StaticBody2D" parent="."]
 position = Vector2(1035, 603)

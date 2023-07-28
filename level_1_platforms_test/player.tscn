@@ -7,8 +7,8 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0mt40"]
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_pw0na"]
-polygon = PackedVector2Array(64, -59.6, 64, 59, 59.6, 64, -59, 64, -64, 59.6, -64, -59.6, -59, -63.9, 59, -64)
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_iu4qq"]
+polygon = PackedVector2Array(53, -56, 58, -52, 58, 53, 56, 53, 52, 58, -53, 58, -53, 56, -58, 52, -58, -52, -53, -56, -53, -58, 53, -58)
 
 [node name="Player" type="Node2D"]
 
@@ -30,7 +30,8 @@ script = ExtResource("3_e5er0")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="CharacterBody2D"]
 position = Vector2(-2.38419e-07, -4.76837e-07)
-scale = Vector2(0.15625, 0.234375)
-occluder = SubResource("OccluderPolygon2D_pw0na")
+scale = Vector2(0.174931, 0.258622)
+occluder = SubResource("OccluderPolygon2D_iu4qq")
+sdf_collision = false
 
 [connection signal="pressed" from="CharacterBody2D/HomeButton" to="CharacterBody2D/HomeButton" method="_on_pressed"]
