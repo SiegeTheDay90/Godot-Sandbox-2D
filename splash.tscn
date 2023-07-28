@@ -19,5 +19,13 @@ offset_right = 849.0
 offset_bottom = 360.0
 text = "Falling Polygons"
 
+[node name="Level_3" type="Button" parent="."]
+offset_left = 242.0
+offset_top = 392.0
+offset_right = 854.0
+offset_bottom = 540.0
+text = "Lighting"
+
 [connection signal="pressed" from="Level_1" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Level_2" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Level_3" to="." method="_on_level_3_pressed"]

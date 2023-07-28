@@ -1,0 +1,107 @@
+[gd_scene load_steps=7 format=3 uid="uid://cn0l7eyneyu3k"]
+
+[ext_resource type="Texture2D" uid="uid://74qf0ufeqded" path="res://696.jpg" id="1_b4sm8"]
+[ext_resource type="PackedScene" uid="uid://dkklo2kiw0v4t" path="res://level_1_platforms_test/player.tscn" id="2_dt0m4"]
+[ext_resource type="Texture2D" uid="uid://ibuoqwv8tp8a" path="res://icon.svg" id="2_jdcf5"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_w17ov"]
+polygon = PackedVector2Array(-0.748409, -0.122492, 3.15119, 16.4752, 8.82334, 16.5977, 0.748408, -0.122492)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b3uru"]
+size = Vector2(3669, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5vxr7"]
+size = Vector2(30, 644)
+
+[node name="Test_Level_3" type="Node2D"]
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 169.0
+offset_top = 314.0
+offset_right = 209.0
+offset_bottom = 354.0
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Panel"]
+z_index = 2
+position = Vector2(-6.00002, 453)
+rotation = -2.0448
+scale = Vector2(25.3872, 16.3276)
+occluder = SubResource("OccluderPolygon2D_w17ov")
+
+[node name="Player" parent="." instance=ExtResource("2_dt0m4")]
+position = Vector2(583, 488)
+scale = Vector2(4, 4)
+
+[node name="Label" type="Label" parent="."]
+offset_left = -1.0
+offset_right = 1148.0
+offset_bottom = 651.0
+text = "Lighting"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="FloorAndWall" type="StaticBody2D" parent="."]
+position = Vector2(57, 635)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FloorAndWall"]
+position = Vector2(1782, 0)
+shape = SubResource("RectangleShape2D_b3uru")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="FloorAndWall"]
+position = Vector2(-41, -311)
+shape = SubResource("RectangleShape2D_5vxr7")
+debug_color = Color(1, 0.0156863, 0, 0.419608)
+
+[node name="Panel" type="Panel" parent="FloorAndWall"]
+texture_filter = 2
+texture_repeat = 2
+offset_left = -59.0
+offset_top = -632.0
+offset_right = -22.0
+offset_bottom = 7.0
+
+[node name="Panel2" type="Panel" parent="FloorAndWall"]
+offset_left = -46.0
+offset_top = -11.0
+offset_right = 3620.0
+offset_bottom = 13.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+z_index = -1
+position = Vector2(602, 266)
+scale = Vector2(10, 10)
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+scale = Vector2(0.1, 0.064)
+texture = ExtResource("1_b4sm8")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-855.625, 990.74)
+rotation = -0.568977
+scale = Vector2(25.3872, 16.3276)
+energy = 6.62
+texture = ExtResource("2_jdcf5")
+texture_scale = 0.79
+metadata/_edit_lock_ = true
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+position = Vector2(-585, 985)
+rotation = -0.568977
+scale = Vector2(25.3872, 16.3276)
+energy = 1.54
+texture = ExtResource("2_jdcf5")
+texture_scale = 0.79
+metadata/_edit_lock_ = true
+
+[node name="PointLight2D3" type="PointLight2D" parent="."]
+position = Vector2(-185, 1030)
+rotation = -0.568977
+scale = Vector2(25.3872, 16.3276)
+energy = 0.74
+texture = ExtResource("2_jdcf5")
+texture_scale = 0.79
+metadata/_edit_lock_ = true
