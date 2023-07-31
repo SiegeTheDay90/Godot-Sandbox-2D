@@ -12,10 +12,6 @@ func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
-	else:
-		print(get_platform_velocity())
-		# print(velocity)
-		pass
 
 	# Handle Jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
@@ -27,7 +23,7 @@ func _physics_process(delta):
 	if direction:
 		velocity.x = direction * SPEED
 	elif is_on_floor():
-		velocity.x = move_toward(velocity.x, 0, SPEED/20)		
+		velocity.x = move_toward(velocity.x, 0, SPEED)		
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED/50)
 

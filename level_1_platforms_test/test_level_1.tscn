@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://befuyfcdi8yqg"]
+[gd_scene load_steps=6 format=3 uid="uid://befuyfcdi8yqg"]
 
 [ext_resource type="PackedScene" uid="uid://dkklo2kiw0v4t" path="res://level_1_platforms_test/player.tscn" id="1_rsvo2"]
 [ext_resource type="Script" path="res://level_1_platforms_test/Platform.gd" id="1_we6pa"]
-[ext_resource type="PackedScene" uid="uid://c20xkg7cqauxf" path="res://platform_corrected.tscn" id="3_nnv5k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b3uru"]
 size = Vector2(3669, 20)
@@ -48,7 +47,7 @@ offset_right = 3620.0
 offset_bottom = 13.0
 
 [node name="Platform2" type="StaticBody2D" parent="."]
-position = Vector2(1035, 603)
+position = Vector2(578, 490)
 script = ExtResource("1_we6pa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform2"]
@@ -89,6 +88,3 @@ polygon = PackedVector2Array(776.498, 237.218, 480.498, 38.2183, 478.498, 236.21
 position = Vector2(144, 475)
 
 [node name="Timer" type="Timer" parent="."]
-
-[node name="Node2D" parent="." instance=ExtResource("3_nnv5k")]
-position = Vector2(280, 493)

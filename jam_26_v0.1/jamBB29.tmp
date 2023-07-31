@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://dt55gbt1eru5s"]
+
+[ext_resource type="PackedScene" uid="uid://dsorjh110dkwy" path="res://jam_26_v0.1/PlayerShip.tscn" id="1_2y3mf"]
+[ext_resource type="PackedScene" uid="uid://cxk4i6ijvejwq" path="res://jam_26_v0.1/missile.tscn" id="2_gw37t"]
+
+[node name="jam26_level_1" type="Node2D"]
+
+[node name="PlayerShip" parent="." instance=ExtResource("1_2y3mf")]
+position = Vector2(510, 270)
+
+[node name="Label" type="Label" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+text = "Space"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LevelCamera" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="Missile" parent="." instance=ExtResource("2_gw37t")]
+position = Vector2(40, 184)
+
+[node name="Missile2" parent="." instance=ExtResource("2_gw37t")]
+position = Vector2(-32, 296)
+
+[node name="Missile3" parent="." instance=ExtResource("2_gw37t")]
+position = Vector2(-176, 384)

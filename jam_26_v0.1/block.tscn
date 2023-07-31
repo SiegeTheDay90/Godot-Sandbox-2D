@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://wfu6ket5l8vp"]
+
+[ext_resource type="Script" path="res://jam_26_v0.1/Block.gd" id="1_aq2vm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4b22p"]
+size = Vector2(128, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1djj4"]
+size = Vector2(168, 96)
+
+[node name="Block" type="RigidBody2D"]
+script = ExtResource("1_aq2vm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_4b22p")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = -64.0
+offset_top = -40.0
+offset_right = 64.0
+offset_bottom = 40.0
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-12, 0)
+shape = SubResource("RectangleShape2D_1djj4")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

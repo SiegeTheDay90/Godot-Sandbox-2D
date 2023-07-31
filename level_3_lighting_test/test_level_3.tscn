@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cn0l7eyneyu3k"]
+[gd_scene load_steps=10 format=3 uid="uid://cn0l7eyneyu3k"]
 
 [ext_resource type="Texture2D" uid="uid://74qf0ufeqded" path="res://696.jpg" id="1_b4sm8"]
 [ext_resource type="PackedScene" uid="uid://dkklo2kiw0v4t" path="res://level_1_platforms_test/player.tscn" id="2_dt0m4"]
+[ext_resource type="Texture2D" uid="uid://ibuoqwv8tp8a" path="res://icon.svg" id="2_uaa20"]
 [ext_resource type="Texture2D" uid="uid://cu5ua4fooe5vd" path="res://level_3_lighting_test/2d_lights_and_shadows_neutral_point_light.webp" id="3_5wiod"]
 [ext_resource type="PackedScene" uid="uid://tcrko1rsqrdv" path="res://platform.tscn" id="4_ip6a7"]
+[ext_resource type="Script" path="res://level_1_platforms_test/Platform.gd" id="5_irxky"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b3uru"]
 size = Vector2(3669, 20)
@@ -15,6 +17,30 @@ size = Vector2(30, 644)
 polygon = PackedVector2Array(0, 19, 258, 21, 258, 1, 0, -1)
 
 [node name="Test_Level_3" type="Node2D"]
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
+position = Vector2(-919, 199)
+scale = Vector2(15.4703, 10.6487)
+energy = 0.39
+shadow_enabled = true
+texture = ExtResource("3_5wiod")
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+light_mask = 2
+position = Vector2(1451, -16)
+scale = Vector2(7.50873, -6.28311)
+energy = 2.03
+shadow_enabled = true
+texture = ExtResource("3_5wiod")
+
+[node name="PointLight2D3" type="PointLight2D" parent="."]
+position = Vector2(-704, -988)
+rotation = 1.09748
+scale = Vector2(30.6838, 3.54689)
+energy = 3.54
+shadow_enabled = true
+texture = ExtResource("2_uaa20")
 
 [node name="Player" parent="." instance=ExtResource("2_dt0m4")]
 position = Vector2(583, 488)
@@ -69,15 +95,11 @@ metadata/_edit_lock_ = true
 scale = Vector2(0.1, 0.064)
 texture = ExtResource("1_b4sm8")
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(592, -1577.5)
-scale = Vector2(37.3271, 17.9883)
-energy = 3.41
-shadow_enabled = true
-texture = ExtResource("3_5wiod")
-
 [node name="Platform" parent="." instance=ExtResource("4_ip6a7")]
 position = Vector2(147, 524)
+script = ExtResource("5_irxky")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Platform"]
+position = Vector2(1, -1)
+scale = Vector2(1.00563, 1.03392)
 occluder = SubResource("OccluderPolygon2D_gsyaf")

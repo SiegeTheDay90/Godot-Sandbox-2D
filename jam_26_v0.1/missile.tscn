@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxk4i6ijvejwq"]
+
+[ext_resource type="Script" path="res://jam_26_v0.1/missile.gd" id="1_2lhc0"]
+[ext_resource type="Texture2D" uid="uid://ch5n1f6cud1dr" path="res://jam_26_v0.1/Pixel_SideScroller_Spaceships_v1.5.3/Projectiles/missile-1.png" id="1_xkgng"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b5vae"]
+radius = 8.0
+
+[node name="Missile" type="StaticBody2D"]
+script = ExtResource("1_2lhc0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_b5vae")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-3.50769, -1.53326e-07)
+rotation = 1.5708
+scale = Vector2(1, 1.35954)
+texture = ExtResource("1_xkgng")

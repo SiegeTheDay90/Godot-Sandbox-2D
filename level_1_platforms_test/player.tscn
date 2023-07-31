@@ -30,8 +30,15 @@ script = ExtResource("3_e5er0")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="CharacterBody2D"]
 position = Vector2(-2.38419e-07, -4.76837e-07)
-scale = Vector2(0.174931, 0.258622)
+scale = Vector2(0.166184, -0.253924)
 occluder = SubResource("OccluderPolygon2D_iu4qq")
 sdf_collision = false
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="CharacterBody2D"]
+position = Vector2(-2.38419e-07, -4.76837e-07)
+scale = Vector2(0.05274, -0.0379607)
+occluder = SubResource("OccluderPolygon2D_iu4qq")
+sdf_collision = false
+occluder_light_mask = 2
 
 [connection signal="pressed" from="CharacterBody2D/HomeButton" to="CharacterBody2D/HomeButton" method="_on_pressed"]

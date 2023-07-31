@@ -1,0 +1,103 @@
+[gd_scene load_steps=15 format=3 uid="uid://dsorjh110dkwy"]
+
+[ext_resource type="Script" path="res://jam_26_v0.1/PlayerShip.gd" id="1_2jv5c"]
+[ext_resource type="Texture2D" uid="uid://cv7f6wqiocjxn" path="res://jam_26_v0.1/Pixel_SideScroller_Spaceships_v1.5.3/Ships/Animated/yellow_ship_spritesheet.png" id="2_evbdv"]
+[ext_resource type="Texture2D" uid="uid://dw7xkvmjk1q8l" path="res://jam_26_v0.1/Pixel_SideScroller_Spaceships_v1.5.3/Ships/Animated/yellow_1_idle.png" id="3_urqkp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_akprm"]
+atlas = ExtResource("2_evbdv")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yp5tk"]
+atlas = ExtResource("2_evbdv")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_erlae"]
+atlas = ExtResource("2_evbdv")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ck0l1"]
+atlas = ExtResource("2_evbdv")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3s6pr"]
+atlas = ExtResource("2_evbdv")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5neuo"]
+atlas = ExtResource("2_evbdv")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_08h4l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_akprm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yp5tk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_erlae")
+}],
+"loop": false,
+"name": &"Down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_urqkp")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ck0l1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3s6pr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5neuo")
+}],
+"loop": false,
+"name": &"Up",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_wdbu4"]
+resource_name = "Idle"
+
+[sub_resource type="Animation" id="Animation_vyfck"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ixmy0"]
+_data = {
+"Idle": SubResource("Animation_wdbu4"),
+"RESET": SubResource("Animation_vyfck")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u814l"]
+radius = 5.0
+height = 40.0
+
+[node name="PlayerShip" type="CharacterBody2D"]
+script = ExtResource("1_2jv5c")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_08h4l")
+animation = &"Down"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../..")
+autoplay = "Idle"
+libraries = {
+"": SubResource("AnimationLibrary_ixmy0")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_u814l")
