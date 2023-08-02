@@ -1,46 +1,102 @@
-[gd_scene load_steps=4 format=3 uid="uid://dt55gbt1eru5s"]
+[gd_scene load_steps=10 format=3 uid="uid://dt55gbt1eru5s"]
 
 [ext_resource type="PackedScene" uid="uid://dsorjh110dkwy" path="res://jam_26_v0.1/PlayerShip.tscn" id="1_2y3mf"]
-[ext_resource type="PackedScene" uid="uid://wfu6ket5l8vp" path="res://jam_26_v0.1/block.tscn" id="2_1cb1n"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_eildf"]
-size = Vector2(176, 20)
+[ext_resource type="Script" path="res://jam_26_v0.1/LevelCamera.gd" id="1_hml8p"]
+[ext_resource type="PackedScene" uid="uid://ksw8rt3hbryi" path="res://jam_26_v0.1/tower.tscn" id="1_yqna2"]
+[ext_resource type="Script" path="res://jam_26_v0.1/ParallaxBackground.gd" id="2_qi5r1"]
+[ext_resource type="Texture2D" uid="uid://cv7e1lvxddlmx" path="res://jam_26_v0.1/free-city-backgrounds-pixel-art/city 1/1.png" id="5_kj8wd"]
+[ext_resource type="Texture2D" uid="uid://cfiqu1ub3hasc" path="res://jam_26_v0.1/free-city-backgrounds-pixel-art/city 1/2.png" id="6_3sgou"]
+[ext_resource type="Texture2D" uid="uid://b5xja63ys5pmd" path="res://jam_26_v0.1/free-city-backgrounds-pixel-art/city 1/3.png" id="7_bqvly"]
+[ext_resource type="Texture2D" uid="uid://cxs0mjrr3tyxk" path="res://jam_26_v0.1/free-city-backgrounds-pixel-art/city 1/4.png" id="8_h0qek"]
+[ext_resource type="PackedScene" uid="uid://n5s0k14ocn46" path="res://jam_26_v0.1/saucer.tscn" id="9_0rwi3"]
 
 [node name="jam26_level_1" type="Node2D"]
 
-[node name="PlayerShip" parent="." instance=ExtResource("1_2y3mf")]
-position = Vector2(544, 344)
+[node name="Tower" parent="." instance=ExtResource("1_yqna2")]
+position = Vector2(1048, 664)
 
-[node name="Label" type="Label" parent="."]
-offset_left = -72.0
-offset_top = 16.0
-offset_right = 1080.0
-offset_bottom = 664.0
-text = "Space"
-horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_lock_ = true
+[node name="Tower2" parent="." instance=ExtResource("1_yqna2")]
+position = Vector2(804, 688)
+
+[node name="Tower3" parent="." instance=ExtResource("1_yqna2")]
+position = Vector2(2647, 681)
+
+[node name="Tower4" parent="." instance=ExtResource("1_yqna2")]
+position = Vector2(2471, 681)
+
+[node name="Tower5" parent="." instance=ExtResource("1_yqna2")]
+position = Vector2(4102, 673)
+
+[node name="Tower6" parent="." instance=ExtResource("1_yqna2")]
+position = Vector2(4726, 659)
+
+[node name="Tower7" parent="." instance=ExtResource("1_yqna2")]
+position = Vector2(5241, 683)
 
 [node name="LevelCamera" type="Camera2D" parent="."]
 anchor_mode = 0
+script = ExtResource("1_hml8p")
 
-[node name="InvisibleFloor" type="StaticBody2D" parent="."]
-position = Vector2(880, 624)
+[node name="PlayerShip" parent="LevelCamera" instance=ExtResource("1_2y3mf")]
+position = Vector2(128, 312)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InvisibleFloor"]
-shape = SubResource("RectangleShape2D_eildf")
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource("2_qi5r1")
 
-[node name="Block" parent="." instance=ExtResource("2_1cb1n")]
-position = Vector2(856, 464)
+[node name="Background" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(1152, 0)
 
-[node name="Block2" parent="." instance=ExtResource("2_1cb1n")]
-position = Vector2(856, 328)
+[node name="1" type="Sprite2D" parent="ParallaxBackground/Background"]
+position = Vector2(576, 324)
+scale = Vector2(2, 2)
+texture = ExtResource("5_kj8wd")
+metadata/_edit_lock_ = true
 
-[node name="Block3" parent="." instance=ExtResource("2_1cb1n")]
-position = Vector2(872, 160)
+[node name="2" type="Sprite2D" parent="ParallaxBackground/Background"]
+position = Vector2(288, 404)
+scale = Vector2(1, 1.75309)
+texture = ExtResource("6_3sgou")
 
-[node name="Block4" parent="." instance=ExtResource("2_1cb1n")]
-position = Vector2(880, -8)
+[node name="3" type="Sprite2D" parent="ParallaxBackground/Background"]
+position = Vector2(864, 404.5)
+scale = Vector2(1, 1.75617)
+texture = ExtResource("6_3sgou")
 
-[node name="Block5" parent="." instance=ExtResource("2_1cb1n")]
-position = Vector2(872, -128)
+[node name="Middleground" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(1152, 0)
+
+[node name="3" type="Sprite2D" parent="ParallaxBackground/Middleground"]
+position = Vector2(328, 496)
+scale = Vector2(1.15278, 1.64198)
+texture = ExtResource("7_bqvly")
+
+[node name="4" type="Sprite2D" parent="ParallaxBackground/Middleground"]
+position = Vector2(864, 529)
+scale = Vector2(1.00347, 1.35802)
+texture = ExtResource("7_bqvly")
+
+[node name="Foreground" type="ParallaxLayer" parent="ParallaxBackground"]
+visible = false
+motion_mirroring = Vector2(1152, 0)
+
+[node name="4" type="Sprite2D" parent="ParallaxBackground/Foreground"]
+position = Vector2(288, 488)
+texture = ExtResource("8_h0qek")
+
+[node name="5" type="Sprite2D" parent="ParallaxBackground/Foreground"]
+position = Vector2(864, 488)
+texture = ExtResource("8_h0qek")
+
+[node name="Saucer" parent="." instance=ExtResource("9_0rwi3")]
+position = Vector2(3441, 416)
+
+[node name="Saucer2" parent="." instance=ExtResource("9_0rwi3")]
+position = Vector2(3249, 157)
+
+[node name="Saucer3" parent="." instance=ExtResource("9_0rwi3")]
+position = Vector2(2004, 223)
+
+[node name="Saucer4" parent="." instance=ExtResource("9_0rwi3")]
+position = Vector2(1628, 216)

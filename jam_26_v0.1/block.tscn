@@ -1,29 +1,37 @@
-[gd_scene load_steps=4 format=3 uid="uid://wfu6ket5l8vp"]
+[gd_scene load_steps=6 format=3 uid="uid://wfu6ket5l8vp"]
 
-[ext_resource type="Script" path="res://jam_26_v0.1/Block.gd" id="1_aq2vm"]
+[ext_resource type="Script" path="res://jam_26_v0.1/block.gd" id="1_aq2vm"]
+[ext_resource type="Texture2D" uid="uid://dub17knusyn2x" path="res://jam_26_v0.1/images/buildingblock.png" id="2_u3sad"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4b22p"]
 size = Vector2(128, 80)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1djj4"]
-size = Vector2(168, 96)
+size = Vector2(144, 88)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1hd0r"]
+size = Vector2(128, 80)
 
 [node name="Block" type="RigidBody2D"]
 script = ExtResource("1_aq2vm")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionBox" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_4b22p")
 
-[node name="Panel" type="Panel" parent="."]
-offset_left = -64.0
-offset_top = -40.0
-offset_right = 64.0
-offset_bottom = 40.0
+[node name="HurtBox" type="Area2D" parent="."]
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-12, 0)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 shape = SubResource("RectangleShape2D_1djj4")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[node name="HitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("RectangleShape2D_1hd0r")
+
+[node name="Sprite" type="Sprite2D" parent="HitBox"]
+position = Vector2(-3.8147e-06, 0)
+scale = Vector2(1.56098, 1.77778)
+texture = ExtResource("2_u3sad")
+
+[connection signal="body_entered" from="HurtBox" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="HitBox" to="." method="_on_area_2d_2_body_entered"]

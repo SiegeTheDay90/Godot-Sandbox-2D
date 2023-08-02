@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://cn0l7eyneyu3k"]
 
-[ext_resource type="Texture2D" uid="uid://74qf0ufeqded" path="res://696.jpg" id="1_b4sm8"]
+[ext_resource type="Texture2D" uid="uid://74qf0ufeqded" path="res://jam_26_v0.1/images/696.jpg" id="1_b4sm8"]
 [ext_resource type="PackedScene" uid="uid://dkklo2kiw0v4t" path="res://level_1_platforms_test/player.tscn" id="2_dt0m4"]
 [ext_resource type="Texture2D" uid="uid://ibuoqwv8tp8a" path="res://icon.svg" id="2_uaa20"]
 [ext_resource type="Texture2D" uid="uid://cu5ua4fooe5vd" path="res://level_3_lighting_test/2d_lights_and_shadows_neutral_point_light.webp" id="3_5wiod"]

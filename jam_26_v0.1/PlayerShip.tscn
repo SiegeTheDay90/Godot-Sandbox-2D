@@ -4,18 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://cv7f6wqiocjxn" path="res://jam_26_v0.1/Pixel_SideScroller_Spaceships_v1.5.3/Ships/Animated/yellow_ship_spritesheet.png" id="2_evbdv"]
 [ext_resource type="Texture2D" uid="uid://dw7xkvmjk1q8l" path="res://jam_26_v0.1/Pixel_SideScroller_Spaceships_v1.5.3/Ships/Animated/yellow_1_idle.png" id="3_urqkp"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_akprm"]
-atlas = ExtResource("2_evbdv")
-region = Rect2(0, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yp5tk"]
-atlas = ExtResource("2_evbdv")
-region = Rect2(48, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_erlae"]
-atlas = ExtResource("2_evbdv")
-region = Rect2(96, 0, 48, 48)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_ck0l1"]
 atlas = ExtResource("2_evbdv")
 region = Rect2(0, 0, 48, 48)
@@ -28,17 +16,29 @@ region = Rect2(144, 0, 48, 48)
 atlas = ExtResource("2_evbdv")
 region = Rect2(192, 0, 48, 48)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_akprm"]
+atlas = ExtResource("2_evbdv")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yp5tk"]
+atlas = ExtResource("2_evbdv")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_erlae"]
+atlas = ExtResource("2_evbdv")
+region = Rect2(96, 0, 48, 48)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_08h4l"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_akprm")
+"texture": SubResource("AtlasTexture_ck0l1")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_yp5tk")
+"texture": SubResource("AtlasTexture_3s6pr")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_erlae")
+"texture": SubResource("AtlasTexture_5neuo")
 }],
 "loop": false,
 "name": &"Down",
@@ -54,13 +54,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ck0l1")
+"texture": SubResource("AtlasTexture_akprm")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3s6pr")
+"texture": SubResource("AtlasTexture_yp5tk")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5neuo")
+"texture": SubResource("AtlasTexture_erlae")
 }],
 "loop": false,
 "name": &"Up",
@@ -84,11 +84,12 @@ radius = 5.0
 height = 40.0
 
 [node name="PlayerShip" type="CharacterBody2D"]
+scale = Vector2(2, 2)
 script = ExtResource("1_2jv5c")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_08h4l")
-animation = &"Down"
+animation = &"Up"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../..")
@@ -101,3 +102,9 @@ libraries = {
 position = Vector2(1, 0)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_u814l")
+
+[node name="canShoot" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="timeout" from="canShoot" to="." method="_on_can_shoot_timeout"]

@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://qbfjqo6maisb"]
+
+[ext_resource type="Texture2D" uid="uid://c76oak750avfe" path="res://jam_26_v0.1/Pixel_SideScroller_Spaceships_v1.5.3/Projectiles/projectile06-1.png" id="1_7dxok"]
+[ext_resource type="Script" path="res://jam_26_v0.1/Laser.gd" id="1_70qet"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_07mih"]
+
+[node name="Laser" type="StaticBody2D"]
+script = ExtResource("1_70qet")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_7dxok")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="HitBox" type="CollisionShape2D" parent="Area2D"]
+rotation = 1.5708
+shape = SubResource("CircleShape2D_07mih")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

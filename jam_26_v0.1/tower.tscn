@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://ksw8rt3hbryi"]
+
+[ext_resource type="PackedScene" uid="uid://wfu6ket5l8vp" path="res://jam_26_v0.1/block.tscn" id="1_vv600"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eildf"]
+size = Vector2(176, 18)
+
+[node name="Tower" type="StaticBody2D"]
+position = Vector2(1048, 568)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_eildf")
+
+[node name="Block" parent="." instance=ExtResource("1_vv600")]
+position = Vector2(0, -48)
+
+[node name="Block2" parent="." instance=ExtResource("1_vv600")]
+position = Vector2(0, -128)
+
+[node name="Block3" parent="." instance=ExtResource("1_vv600")]
+position = Vector2(0, -208)
+
+[node name="Block4" parent="." instance=ExtResource("1_vv600")]
+position = Vector2(0, -288)
+
+[node name="Block5" parent="." instance=ExtResource("1_vv600")]
+position = Vector2(0, -368)
+
+[node name="Block6" parent="." instance=ExtResource("1_vv600")]
+position = Vector2(0, -448)
+
+[node name="Block7" parent="." instance=ExtResource("1_vv600")]
+position = Vector2(0, -528)
+
+[node name="Block8" parent="." instance=ExtResource("1_vv600")]
+position = Vector2(0, -608)
